@@ -11,6 +11,8 @@ from torchvision.models.detection.faster_rcnn import FastRCNNPredictor
 import utils
 from engine import evaluate
 
+import gdown
+
 class DrinksDataset(torch.utils.data.Dataset):
     def __init__(self, root, annotations_json, Transforms=None):
         self.root = root
@@ -96,7 +98,12 @@ if __name__ == '__main__':
     params = [p for p in model.parameters() if p.requires_grad]
     optimizer = torch.optim.SGD(params, lr=0.005,momentum=0.9, weight_decay=0.0005)
     
-    checkpoint = torch.load("fasterrcnn_model_drinks_Epoch7.pt") # edit epoch as needed
+    model_path = 'fasterrcnn_model_drinks_Epoch7.pt'        # edit epoch as needed
+    if not os.path.exists(model_path):
+        url = 'https://drive.google.com/u/1/uc?id=1-JLadMe-gu89P808wb87w2dONlwmYV8g'
+        gdown.download(url, model_path, quiet=False)
+
+    checkpoint = torch.load(model_path)
     model.load_state_dict(checkpoint['model_state_dict'])
     optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
     model.to(device)
