@@ -4,7 +4,7 @@ Object Detection using Torchvision's Faster-RCNN model on a Drinks Dataset.
 
 # Set-up
 1) Fork and clone this git repository.
-2) run `pip install -r requirements.txt`. Note that this repository only requires `Torch`, `Torchvision`, and `gdown`. Download Torch and Torchvision with cuda-enabled if possible.
+2) run `pip install -r requirements.txt`. Install Torch and Torchvision with cuda-enabled if possible.
 
 # Drinks Dataset
 The Drinks Dataset is comprised of ~1000 images of at most 3 drinks in various positions. The 3 drinks are Summit Water Bottle, Coca-Cola Can, and Del Monte Pineapple Juice.
