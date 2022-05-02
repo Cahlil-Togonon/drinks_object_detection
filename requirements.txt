@@ -1,4 +1,6 @@
 torch
 torchvision
-Pillow
+pillow
 gdown
+argparse
+opencv-python
