@@ -51,7 +51,6 @@ class  VideoDemo():
         line_type = 1
 
         while True:
-            start_time = datetime.datetime.now()
             _, image = self.capture.read()
 
             img = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)# / 255.0
@@ -67,14 +66,10 @@ class  VideoDemo():
             items = {}
             for i in range(len(class_names)):
                 rect = rects[i]
-                x1 = rect[0]
-                y1 = rect[1]
-                x2 = rect[2]
-                y2 = rect[3]
-                x1 = int(x1)
-                x2 = int(x2)
-                y1 = int(y1)
-                y2 = int(y2)
+                x1 = int(rect[0])
+                y1 = int(rect[1])
+                x2 = int(rect[2])
+                y2 = int(rect[3])
                 name = class_names[i]
                 if name in items.keys():
                     items[name] += 1
@@ -113,17 +108,13 @@ if __name__ == '__main__':
     num_classes = 4             # 3 drinks + background
     in_features = model.roi_heads.box_predictor.cls_score.in_features
     model.roi_heads.box_predictor = FastRCNNPredictor(in_features, num_classes)
-    params = [p for p in model.parameters() if p.requires_grad]
-    optimizer = torch.optim.SGD(params, lr=0.005,momentum=0.9, weight_decay=0.0005)
     
     model_path = 'fasterrcnn_model_drinks_Epoch9.pt'      # edit epoch as needed
     download_model(model_path)
 
     checkpoint = torch.load(model_path)
     model.load_state_dict(checkpoint['model_state_dict'])
-    optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
-    
-    model.to('cuda')
+    model.to(device)
     model.eval()
 
     videodemo = VideoDemo(detector=model,
