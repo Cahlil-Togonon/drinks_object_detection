@@ -68,7 +68,7 @@ Epoch: [9] Total time: 0:10:20 (0.6194 s / it)
 ```
 
 # Real-time Object Detection
-You can also run a real-time tracking on your camera using `python video_demo.py`. 
+You can also run real-time tracking through your camera using `python video_demo.py`. 
 It uses the pre-trained model mentioned above and should show bounding boxes and labels from the model's inference on screen.
 
 # Faster RCNN
