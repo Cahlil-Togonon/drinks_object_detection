@@ -1,4 +1,5 @@
 import cv2
+import argparse
 from PIL import Image
 
 import torch
@@ -111,9 +112,14 @@ if __name__ == '__main__':
     model.to(device)
     model.eval()
 
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--record", default=False, required=False)
+    parser.add_argument("--filename", default="demo.mp4", required=False)
+    args = parser.parse_args()
+
     videodemo = VideoDemo(model=model,
                         camera=0,
-                        record=False,
-                        filename='demo.mp4',
+                        record=args.record,
+                        filename=args.filename,
                         Transforms=T.ToTensor())
     videodemo.loop()
