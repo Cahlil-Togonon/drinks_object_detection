@@ -10,7 +10,7 @@ Object Detection using Torchvision's Faster-RCNN model on a Drinks Dataset.
 The Drinks Dataset is comprised of ~1000 images of at most 3 drinks in various positions. The 3 drinks are Summit Water Bottle, Coca-Cola Can, and Del Monte Pineapple Juice.
 The Drinks Dataset also includes annotations and segmentation files in `.csv` and `.json` format.
 
-`train.py` and `test.py` will automatically download and unpack the Drinks Dataset from `drinks.tar.gz` to the folder `/drinks`.
+`train.py` and `test.py` will automatically download and unpack the Drinks Dataset from `'drinks.tar.gz'` to the folder `/drinks`.
 The directory format should be as follows:
 ```
 path/to/this/repo/
@@ -83,9 +83,9 @@ The model was built using Torchvision's Faster-RCNN model with pretrained weight
 * [PyTorch torchvision tutorial](https://pytorch.org/tutorials/intermediate/torchvision_tutorial.html)
 
 # References
-Helper functions for model training and evaluation such as `engine.py`,`transforms.py`,`utils.py`,`coco_utls.py`, and `coco_eval.py` were taken from the Pytorch [vision/references/detection](https://github.com/pytorch/vision/tree/main/references/detection)
+Helper functions for model training and evaluation such as `engine.py`,`transforms.py`,`utils.py`,`coco_utls.py`, and `coco_eval.py` were taken from the Pytorch [vision/references/detection](https://github.com/pytorch/vision/tree/main/references/detection).
 
-Code for `video_demo.py` were derived from roatienza's [Advanced Deep Learning with Keras](https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter11-detection/video_demo.py)
+Code for `video_demo.py` were derived from roatienza's [Advanced Deep Learning with Keras](https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter11-detection/video_demo.py).
 ```
 @book{atienza2020advanced,
   title={Advanced Deep Learning with TensorFlow 2 and Keras: Apply DL, GANs, VAEs, deep RL, unsupervised learning, object detection and segmentation, and more},
