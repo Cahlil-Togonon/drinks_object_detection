@@ -1,5 +1,4 @@
 import cv2
-import datetime
 from PIL import Image
 
 import torch
@@ -11,31 +10,30 @@ from gdrive_downloader import download_model
 
 class  VideoDemo():
     def __init__(self,
-                 detector,
-                 camera=0,
-                 width=640,
-                 height=480,
-                 record=False,
-                 filename="demo.mp4",
-                 Transforms=None):
+                model,
+                camera=0,
+                width=640,
+                height=480,
+                record=False,
+                filename="demo.mp4",
+                Transforms=None):
+
+        self.model = model
         self.camera = camera
-        self.detector = detector
         self.width = width
         self.height = height
         self.record = record
         self.filename = filename
-        self.videowriter = None
-        self.detector = detector
         self.Transforms = Transforms
-        self.initialize()
+        self.videowriter = None
+        self.colors = [(0, 0, 0), (255, 0, 0), (0, 0, 255), (0, 255, 0), (128, 128, 0)]
+        self.class_names = ["background", "Water", "Coke", "Juice"]
 
-    def initialize(self):
         self.capture = cv2.VideoCapture(self.camera)
         if not self.capture.isOpened():
             print("Error opening video camera")
             return
 
-        # cap.set(cv2.CAP_PROP_FPS, 5)
         self.capture.set(cv2.CAP_PROP_FRAME_WIDTH, self.width)
         self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT, self.height)
 
@@ -43,50 +41,46 @@ class  VideoDemo():
             self.videowriter = cv2.VideoWriter(self.filename,
                                                 cv2.VideoWriter_fourcc('m', 'p', '4', 'v'),
                                                 10,
-                                                (self.width, self.height), 
+                                                (self.width, self.height),
                                                 isColor=True)
 
     def loop(self):
-        font = cv2.FONT_HERSHEY_DUPLEX
-        line_type = 1
+        font = cv2.FONT_HERSHEY_TRIPLEX
 
         while True:
             _, image = self.capture.read()
 
-            img = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)# / 255.0
+            img = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
             img = Image.fromarray(img).convert("RGB")
             if self.Transforms is not None:
                 img = self.Transforms(img)
             img = img[None, :]
             img = img.to('cuda')
-            output = self.detector(img)
-            class_names = output[0]['labels']
+
+            output = self.model(img)
+
+            labels = output[0]['labels']
             rects = output[0]['boxes']
 
-            items = {}
-            for i in range(len(class_names)):
+            for i in range(len(labels)):
                 rect = rects[i]
                 x1 = int(rect[0])
                 y1 = int(rect[1])
                 x2 = int(rect[2])
                 y2 = int(rect[3])
-                name = class_names[i]
-                if name in items.keys():
-                    items[name] += 1
-                else:
-                    items[name] = 1
-                index = name.item()
-                colors = [(0, 0, 0), (255, 0, 0), (0, 0, 255), (0, 255, 0), (128, 128, 0)]
-                color = colors[index]
+                
+                index = labels[i]
+                color = self.colors[index]
+                class_name = self.class_names[index]
+
                 cv2.rectangle(image, (x1, y1), (x2, y2), color, 3)
-                labels = ["background", "Water", "Coke", "Juice"]
                 cv2.putText(image,
-                            labels[index],
+                            class_name,
                             (x1, y1-15),
                             font,
-                            0.5,
+                            1,
                             color,
-                            line_type)
+                            2)
 
             cv2.imshow('image', image)
             if self.videowriter is not None:
@@ -117,9 +111,9 @@ if __name__ == '__main__':
     model.to(device)
     model.eval()
 
-    videodemo = VideoDemo(detector=model,
-                            camera=0,
-                            record=False,
-                            filename='demo.mp4',
-                            Transforms=T.ToTensor())
+    videodemo = VideoDemo(model=model,
+                        camera=0,
+                        record=False,
+                        filename='demo.mp4',
+                        Transforms=T.ToTensor())
     videodemo.loop()
