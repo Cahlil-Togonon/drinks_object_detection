@@ -79,13 +79,14 @@ You can also add `--filename=video.mp4` to save to a specific filename (default 
 The model was built using Torchvision's Faster-RCNN model with pretrained weights (from fasterrcnn_resnet50_fpn). The head or predictor was changed to output only 4 classes (3 drinks + 1 background).
 ### Paper
 * [Arxiv](https://arxiv.org/abs/1506.01497)
+
+# References
 ### Code Reference
 * [PyTorch](https://pytorch.org/tutorials/intermediate/torchvision_tutorial.html)
 
-# References
-Helper functions for model training and evaluation such as `engine.py`,`transforms.py`,`utils.py`,`coco_utls.py`, and `coco_eval.py` were taken from the * [Pytorch vision/references/detection GitHub](https://github.com/pytorch/vision/tree/main/references/detection)
+Helper functions for model training and evaluation such as `engine.py`,`transforms.py`,`utils.py`,`coco_utls.py`, and `coco_eval.py` were taken from the Pytorch [vision/references/detection](https://github.com/pytorch/vision/tree/main/references/detection)
 
-Code for `video_demo.py` were derived from * [Advanced Deep Learning with Keras](https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter11-detection/video_demo.py)
+Code for `video_demo.py` were derived from [Advanced Deep Learning with Keras](https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter11-detection/video_demo.py)
 ```
 @book{atienza2020advanced,
   title={Advanced Deep Learning with TensorFlow 2 and Keras: Apply DL, GANs, VAEs, deep RL, unsupervised learning, object detection and segmentation, and more},
