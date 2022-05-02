@@ -7,7 +7,7 @@ from torchvision.models.detection.faster_rcnn import FastRCNNPredictor
 import utils
 from engine import train_one_epoch
 from dataloader import DrinksDataset
-from google_downloader import download_dataset
+from gdrive_downloader import download_dataset
 
 if __name__ == '__main__':
     data_path = "drinks"

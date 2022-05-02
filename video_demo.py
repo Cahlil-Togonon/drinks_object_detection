@@ -7,7 +7,7 @@ from torchvision import models
 from torchvision import transforms as T
 from torchvision.models.detection.faster_rcnn import FastRCNNPredictor
 
-from google_downloader import download_model
+from gdrive_downloader import download_model
 
 class  VideoDemo():
     def __init__(self,
