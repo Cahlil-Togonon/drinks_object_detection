@@ -25,8 +25,8 @@ path/to/this/repo/
 # Testing the pre-trained model
 run `python test.py` at the terminal.
 - It will automatically download the Drinks Dataset to `/drinks`, as well as the latest pre-trained model from Google Drive using `gdrive_downloader.py`.
-- The pre-trained model `fasterrcnn_model_drinks_Epoch9.pt` is checkpoint of the training script after 10 epochs.
-Here are the result of testing the pre-trained model (epoch=10):
+- The pre-trained model `'fasterrcnn_model_drinks_Epoch9.pt'` is the model checkpoint for the training script after 10 epochs.
+Here are the testing results for the pre-trained model (epoch=10):
 ```
 Test:  [ 0/51]  eta: 0:04:55  model_time: 2.9582 (2.9582)  evaluator_time: 0.0010 (0.0010)  time: 5.7982  data: 2.8370  max mem: 835
 Test:  [50/51]  eta: 0:00:00  model_time: 0.2240 (0.2770)  evaluator_time: 0.0010 (0.0011)  time: 0.2253  data: 0.0001  max mem: 835
@@ -51,8 +51,8 @@ IoU metric: bbox
 
 # Training the model
 run `python train.py` at the terminal.
-- default number of epochs is 10 for the training. 
-Here are the results for the 10th epoch:
+- 10 is the default number of epochs for training. 
+Here are the training results for the 10th epoch:
 ```
 Epoch: [9]  [   0/1001]  eta: 11:28:38  lr: 0.000005  loss: 0.0388 (0.0388)  loss_classifier: 0.0149 (0.0149)  loss_box_reg: 0.0232 (0.0232)  loss_objectness: 0.0002 (0.0002)  loss_rpn_box_reg: 0.0005 (0.0005)  time: 41.2769  data: 36.9610  max mem: 1444
 Epoch: [9]  [ 100/1001]  eta: 0:14:28  lr: 0.000005  loss: 0.0407 (0.0422)  loss_classifier: 0.0108 (0.0133)  loss_box_reg: 0.0215 (0.0279)  loss_objectness: 0.0001 (0.0003)  loss_rpn_box_reg: 0.0003 (0.0007)  time: 0.5760  data: 0.0001  max mem: 1444
