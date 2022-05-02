@@ -9,6 +9,7 @@ Object Detection using Torchvision's Faster-RCNN model on a Drinks Dataset.
 # Drinks Dataset
 The Drinks Dataset is comprised of ~1000 images of at most 3 drinks in various positions. The 3 drinks are Summit Water Bottle, Coca-Cola Can, and Del Monte Pineapple Juice.
 The Drinks Dataset also includes annotations and segmentation files in `.csv` and `.json` format.
+
 `train.py` and `test.py` will automatically download and unpack the Drinks Dataset from `drinks.tar.gz` to the folder `/drinks`.
 The directory format should be as follows:
 ```
@@ -71,10 +72,25 @@ Epoch: [9] Total time: 0:10:20 (0.6194 s / it)
 You can also run real-time tracking through your camera using `python video_demo.py`. 
 It uses the pre-trained model mentioned above and should show bounding boxes and labels from the model's inference on screen.
 
-You can also parse the argument `--record=True` or `-r=True` if you wish to save the video to mp4 format (default filename is `demo.mp4`)
+You can parse the argument `--record=True` if you wish to save the video to mp4 format.
+You can also add `--filename=video.mp4` to save to a specific filename (default = `demo.mp4`).
 
 # Faster RCNN
-TBA
+The model was built using Torchvision's Faster-RCNN model with pretrained weights (from fasterrcnn_resnet50_fpn). The head or predictor was changed to output only 4 classes (3 drinks + 1 background).
+### Paper
+* [Arxiv](https://arxiv.org/abs/1506.01497)
+### Code Reference
+* [PyTorch](https://pytorch.org/tutorials/intermediate/torchvision_tutorial.html)
 
-# Citations
-TBA
+# References
+Helper functions for model training and evaluation such as `engine.py`,`transforms.py`,`utils.py`,`coco_utls.py`, and `coco_eval.py` were taken from the * [Pytorch vision/references/detection GitHub](https://github.com/pytorch/vision/tree/main/references/detection)
+
+Code for `video_demo.py` were derived from * [Advanced Deep Learning with Keras](https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter11-detection/video_demo.py)
+```
+@book{atienza2020advanced,
+  title={Advanced Deep Learning with TensorFlow 2 and Keras: Apply DL, GANs, VAEs, deep RL, unsupervised learning, object detection and segmentation, and more},
+  author={Atienza, Rowel},
+  year={2020},
+  publisher={Packt Publishing Ltd}
+}
+```
