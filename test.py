@@ -25,14 +25,14 @@ if __name__ == '__main__':
     device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
     print(device)
 
-    model = models.detection.fasterrcnn_resnet50_fpn(pretrained=True)
+    model = models.detection.fasterrcnn_resnet50_fpn()
     num_classes = 4             # 3 drinks + background
     in_features = model.roi_heads.box_predictor.cls_score.in_features
     model.roi_heads.box_predictor = FastRCNNPredictor(in_features, num_classes)
     params = [p for p in model.parameters() if p.requires_grad]
     optimizer = torch.optim.SGD(params, lr=0.005,momentum=0.9, weight_decay=0.0005)
     
-    model_path = 'fasterrcnn_model_drinks_Epoch7.pt'      # edit epoch as needed
+    model_path = 'fasterrcnn_model_drinks_Epoch9.pt'      # edit epoch as needed
     download_model(model_path)
 
     checkpoint = torch.load(model_path)

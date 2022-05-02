@@ -33,7 +33,7 @@ if __name__ == '__main__':
     optimizer = torch.optim.SGD(params, lr=0.005,momentum=0.9, weight_decay=0.0005)
     lr_scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=3, gamma=0.1)
 
-    # model_path = 'fasterrcnn_model_drinks_Epoch7.pt'      # edit epoch as needed
+    # model_path = 'fasterrcnn_model_drinks_Epoch9.pt'      # edit epoch as needed
     # download_model(model_path)
 
     # checkpoint = torch.load(model_path)
