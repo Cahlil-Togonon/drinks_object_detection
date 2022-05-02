@@ -27,31 +27,31 @@ run `python test.py` at the terminal.
 - The pre-trained model `fasterrcnn_model_drinks_Epoch9.pt` is checkpoint of the training script after 10 epochs.
 Here are the result of testing the pre-trained model (epoch=10):
 ```
-Test:  [ 0/51]  eta: 0:07:13  model_time: 4.9107 (4.9107)  evaluator_time: 0.0100 (0.0100)  time: 8.5070  data: 3.5823  max mem: 835
-Test:  [50/51]  eta: 0:00:00  model_time: 0.2240 (0.3161)  evaluator_time: 0.0010 (0.0015)  time: 0.2259  data: 0.0000  max mem: 835
-Test: Total time: 0:00:20 (0.3924 s / it)
-Averaged stats: model_time: 0.2240 (0.3161)  evaluator_time: 0.0010 (0.0015)
+Test:  [ 0/51]  eta: 0:04:55  model_time: 2.9582 (2.9582)  evaluator_time: 0.0010 (0.0010)  time: 5.7982  data: 2.8370  max mem: 835
+Test:  [50/51]  eta: 0:00:00  model_time: 0.2240 (0.2770)  evaluator_time: 0.0010 (0.0011)  time: 0.2253  data: 0.0001  max mem: 835
+Test: Total time: 0:00:17 (0.3382 s / it)
+Averaged stats: model_time: 0.2240 (0.2770)  evaluator_time: 0.0010 (0.0011)
 Accumulating evaluation results...
-DONE (t=0.03s).
+DONE (t=0.02s).
 IoU metric: bbox
- Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.893
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.895
  Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.986
  Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.986
  Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = -1.000
  Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.863
- Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.895
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.838
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.919
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.919
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.897
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.839
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.920
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.920
  Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = -1.000
  Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.863
- Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.922
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.923
 ```
 
 # Training the model
 run `python train.py` at the terminal.
 - default number of epochs is 10 for the training. 
-Results after training for 10 epochs:
+Here are the results for the 10th epoch:
 ```
 Epoch: [9]  [   0/1001]  eta: 11:28:38  lr: 0.000005  loss: 0.0388 (0.0388)  loss_classifier: 0.0149 (0.0149)  loss_box_reg: 0.0232 (0.0232)  loss_objectness: 0.0002 (0.0002)  loss_rpn_box_reg: 0.0005 (0.0005)  time: 41.2769  data: 36.9610  max mem: 1444
 Epoch: [9]  [ 100/1001]  eta: 0:14:28  lr: 0.000005  loss: 0.0407 (0.0422)  loss_classifier: 0.0108 (0.0133)  loss_box_reg: 0.0215 (0.0279)  loss_objectness: 0.0001 (0.0003)  loss_rpn_box_reg: 0.0003 (0.0007)  time: 0.5760  data: 0.0001  max mem: 1444
@@ -70,6 +70,8 @@ Epoch: [9] Total time: 0:10:20 (0.6194 s / it)
 # Real-time Object Detection
 You can also run real-time tracking through your camera using `python video_demo.py`. 
 It uses the pre-trained model mentioned above and should show bounding boxes and labels from the model's inference on screen.
+
+You can also parse the argument `--record=True` or `-r=True` if you wish to save the video to mp4 format (default filename is `demo.mp4`)
 
 # Faster RCNN
 TBA
