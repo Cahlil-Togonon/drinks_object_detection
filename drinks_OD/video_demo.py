@@ -104,7 +104,7 @@ if __name__ == '__main__':
     in_features = model.roi_heads.box_predictor.cls_score.in_features
     model.roi_heads.box_predictor = FastRCNNPredictor(in_features, num_classes)
     
-    model_path = 'fasterrcnn_model_drinks_Epoch9.pt'      # edit epoch as needed
+    model_path = './fasterrcnn_model_drinks_Epoch9.pt'      # edit epoch as needed
     download_model(model_path)
 
     checkpoint = torch.load(model_path)

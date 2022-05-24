@@ -4,15 +4,15 @@ from torchvision import models
 from torchvision import transforms as T
 from torchvision.models.detection.faster_rcnn import FastRCNNPredictor
 
-from vision_utils import utils
-from vision_utils.engine import evaluate
+import utils
+from engine import evaluate
 from dataloader import DrinksDataset
 from gdrive_downloader import download_dataset, download_model
 
 if __name__ == '__main__':
-    data_path = "drinks"
+    data_path = "./drinks"
     download_dataset(data_path)
-    test_annotations_json = "drinks/labels_test.json"
+    test_annotations_json = "./drinks/labels_test.json"
     test_dataset = DrinksDataset(data_path, test_annotations_json, T.ToTensor())
 
     test_dataloader = DataLoader(test_dataset,
@@ -30,7 +30,7 @@ if __name__ == '__main__':
     in_features = model.roi_heads.box_predictor.cls_score.in_features
     model.roi_heads.box_predictor = FastRCNNPredictor(in_features, num_classes)
     
-    model_path = 'fasterrcnn_model_drinks_Epoch9.pt'      # edit epoch as needed
+    model_path = './fasterrcnn_model_drinks_Epoch9.pt'      # edit epoch as needed
     download_model(model_path)
 
     checkpoint = torch.load(model_path)
