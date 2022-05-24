@@ -4,8 +4,8 @@ from torchvision import models
 from torchvision import transforms as T
 from torchvision.models.detection.faster_rcnn import FastRCNNPredictor
 
-from model_utils import utils
-from model_utils.engine import evaluate
+from vision_utils import utils
+from vision_utils.engine import evaluate
 from dataloader import DrinksDataset
 from gdrive_downloader import download_dataset
 
