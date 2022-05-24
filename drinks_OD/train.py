@@ -5,7 +5,7 @@ from torchvision import transforms as T
 from torchvision.models.detection.faster_rcnn import FastRCNNPredictor
 
 import utils
-from engine import evaluate
+from engine import evaluate, train_one_epoch
 from dataloader import DrinksDataset
 from gdrive_downloader import download_dataset
 
