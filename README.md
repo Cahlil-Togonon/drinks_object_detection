@@ -10,7 +10,7 @@ Keyword-Spotting Transformer model using Torch and Pytorch Lightning. Google's S
 run `python train.py` at the terminal.
 - It will automatically download and unpack Google's SpeechCommands Dataset to `data/speech-commands/`.
 
-Here are the training logs from my testing. Hyperparameters used were: patch-size = 4x4, embed-size = 64, num-heads = 8, depth = 12, lr = 0.001, batch-size = 64, max-epochs = 30. The built KWS transformer was able to reach a max accuracy of 87.50% during training at epoch=21.
+Here are the training logs from my testing. Hyperparameters used were: patch-size = 4x4, embed-size = 64, num-heads = 8, depth = 12, lr = 0.001, batch-size = 64, max-epochs = 30. The KWS transformer built was able to reach a max accuracy of 87.50% during training at epoch=21.
 
 ![alt text](https://github.com/Cahlil-Togonon/drinks_object_detection/blob/main/resources/training_logs.png?raw=true)
 
