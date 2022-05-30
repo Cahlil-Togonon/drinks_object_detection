@@ -1,6 +1,14 @@
 torch
 torchvision
+torchaudio
 pillow
 gdown
 argparse
 opencv-python
+
+matplotlib
+librosa
+einops
+
+sounddevice
+validators
