@@ -1,5 +1,5 @@
 # KWS Transformer
-Keyword-Spotting Transformer model using Torch and Pytorch Lightning. Google's SpeechCommands Dataset were used for training. Keyword-Spotting is the act of finding keywords in a given audio file. This part of the repository aims to build a visual transformer model for KWS, by transforming a given waveform to an 'image' using a Mel Spectrogram.
+Keyword-Spotting Transformer model using Torch and Pytorch Lightning. Google's SpeechCommands Dataset were used for training. Keyword-Spotting is the act of finding keywords in a given audio file. This part of the repository aims to build a visual transformer model for KWS, by transforming a given waveform to an 'image' using a Mel spectrogram. There will be 35 keywords + silence and unknown, for a total of 37 classes.
 - Adrian Cahlil Eiz G. Togonon (agtogonon@up.edu.ph)
 
 ## Set-up
