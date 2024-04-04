@@ -118,7 +118,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     videodemo = VideoDemo(model=model,
-                        camera=0,
+                        camera=4,
                         record=args.record,
                         filename=args.filename,
                         Transforms=T.ToTensor())
